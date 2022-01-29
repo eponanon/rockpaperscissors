@@ -11,7 +11,8 @@
 <h1>ROCK PAPER SCISSORS</h1>
 
 <br>
-<button onclick="playRound();">Let's Play!</button>
+<button onclick="playRound();">Play Single Round</button>
+<button onclick="playMatch();">Play First-To-Five Match</button>
 
 
 <script>
@@ -68,23 +69,49 @@
                 scoreIt(`Scissors Meet Scissors! Play Again!`);
             }
             function scoreIt(roundMsg) {
-                document.getElementById("gameSummary").append(`${roundMsg}`);
+                let newP = document.createElement("P");
+                document.getElementById("gameSummary").appendChild(newP);
+                document.getElementById("gameSummary").lastChild.innerHTML = roundMsg;
+                /* document.getElementById("gameSummary").append(`${roundMsg}`); this code works, but it's ugly*/
                 if (roundMsg.indexOf("Player") !== -1) {
                     playerRoundsWon = playerRoundsWon + 1;
                 }
                 if (roundMsg.indexOf("Computer") !== -1) {
                     cpuRoundsWon = cpuRoundsWon + 1;
                 }
+                let update = `Player Has Won ${playerRoundsWon}, Computer Has Won ${cpuRoundsWon}`;
                 console.log(playerRoundsWon, cpuRoundsWon);
+                let newLi = document.createElement("LI");
+                document.getElementById("roundScores").appendChild(newLi);
+                document.getElementById("roundScores").lastChild.innerHTML = update;
                 
             }
         }
     
-
+    function playMatch() {
+        for (let i = 0; i < 25; i++) {
+            playRound();
+            if (playerRoundsWon === 5) {
+                alert("You Win! Doesn't Matter Much, but still");
+                break;
+            }
+            if (cpuRoundsWon === 5) {
+                alert("Thanks for playing, LOSER");
+                break;
+            }
+            if (i === 25) {
+                alert("The CPU has overheated! Nobody wins, everybody run");
+                break;
+            }
+        }
+    }
 
 </script>
 
-<p id="gameSummary">Scores Go Here</p>
+<p id="gameSummary">Scores Go Here
+    <ul id="roundScores">
+    </ul>
+</p>
 
 </body>
 </html>
