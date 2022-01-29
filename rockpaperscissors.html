@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROCK PAPER SCISSORS FOR ODIN</title>
+</head>
+<body>
+
+<h1>ROCK PAPER SCISSORS</h1>
+
+<br>
+<button onclick="playRound();">Let's Play!</button>
+
+
+<script>
+    let playerRoundsWon = 0;
+    let cpuRoundsWon = 0;
+    function playRound() {
+        let playerSelection = window.prompt("Choose Rock, Paper, or Scissors!");
+        /* The computerSelection function returns a value of 0 for rock, 1 for paper, or 2 for scissors. */
+        let computerSelection = computerPlay();
+            function computerPlay() {
+                return Math.floor(Math.random() * 3);
+            }
+        /* code below converts the user input to 0, 1 or 2, and corrects for capitalization. */
+            playerSelection = playerSelection.toLowerCase();
+            if (playerSelection === "rock") {
+                playerSelection = 0;
+            }
+            if (playerSelection === "paper") {
+                playerSelection = 1;
+            }
+            if (playerSelection === "scissors") {
+                playerSelection = 2;
+            }
+        /* These are the per-round results messages. */
+            let ps = playerSelection;
+            let cs = computerSelection;
+            let plrWin = "Player Wins This Round!";
+            let cpuWin = "Computer Wins This Round!";
+            if (ps === 0 && cs === 0) {
+                scoreIt("Rock Meets Rock! Play Again!");
+            }
+            if (ps === 0 && cs === 1) {
+                scoreIt(`Paper Smothers Rock! ${cpuWin}`);
+            }
+            if (ps === 0 && cs === 2) {
+                scoreIt(`Rock Breaks Scissors! ${plrWin}`);
+            }
+            if (ps === 1 && cs === 0) {
+                scoreIt(`Paper Smothers Rock! ${plrWin}`);
+            }
+            if (ps === 1 && cs === 1) {
+                scoreIt(`Paper Meets Paper! Play Again!`);
+            }
+            if (ps === 1 && cs === 2) {
+                scoreIt(`Scissors Cut Paper! ${cpuWin}`);
+            }
+            if (ps === 2 && cs === 0) {
+                scoreIt(`Rock Breaks Scissors! ${cpuWin}`);
+            }
+            if (ps === 2 && cs === 1) {
+                scoreIt(`Scissors Cuts Paper! ${plrWin}`);
+            }
+            if (ps === 2 && cs === 2) {
+                scoreIt(`Scissors Meet Scissors! Play Again!`);
+            }
+            function scoreIt(roundMsg) {
+                document.getElementById("gameSummary").append(`${roundMsg}`);
+                if (roundMsg.indexOf("Player") !== -1) {
+                    playerRoundsWon = playerRoundsWon + 1;
+                }
+                if (roundMsg.indexOf("Computer") !== -1) {
+                    cpuRoundsWon = cpuRoundsWon + 1;
+                }
+                console.log(playerRoundsWon, cpuRoundsWon);
+                
+            }
+        }
+    
+
+
+</script>
+
+<p id="gameSummary">Scores Go Here</p>
+
+</body>
+</html>
