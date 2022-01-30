@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROCK PAPER SCISSORS FOR ODIN</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+<script src="scripts.js"></script>
+
+<h1 class="title">ROCK PAPER SCISSORS<br>
+<div class="title2">First To Five Wins!</class>
+</h1>
+
+<br>
+<!-- <button onclick="playRound();">Play Single Round</button>
+<button onclick="playMatch();">Play First-To-Five Match</button>
+-->
+
+<div id="threechoicesbox" class="flexem">
+<a href="#" onclick="chooseRock();"><img class="choicepix" id="rockpic" src="images/rock.jpg"></a>
+<a href="#" onclick="choosePaper();"><img class="choicepix" id="paperpic" src="images/paper.jpg"></a>
+<a href="#" onclick="chooseScissors();"><img class="choicepix" id="scissorpic" src="images/scissors.jpg"></a>
+</div>
+
+<p id="currentMatchScore" class="scoreboard"></p>
+<div class="flexem">
+<p id="gameSummary">Henceforth Shalt Follow The Record of Thy Mighty Struggles:
+    <ul id="roundScores">
+    </ul>
+</p>
+</div>
+
+</body>
+</html>
