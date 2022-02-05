@@ -15,6 +15,15 @@
         playRound(2);
     }
 
+    const rockbutt = document.querySelector('#rockbtn');
+    rockbutt.addEventListener('click', chooseRock);
+    
+    const paperbutt = document.querySelector('#paperbtn');
+    paperbutt.addEventListener('click', choosePaper);
+
+    const scissorsbutt = document.querySelector('#scissorsbtn');
+    scissorsbutt.addEventListener('click', chooseScissors);
+
     function playRound(playerSelection) {
         let computerSelection = computerPlay();
             function computerPlay() {
